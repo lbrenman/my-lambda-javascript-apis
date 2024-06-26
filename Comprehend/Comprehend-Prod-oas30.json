@@ -1,0 +1,375 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Comprehend",
+    "description" : "Comprehend API - Amazon Web Services service for gaining insight into the content of text",
+    "version" : "2024-03-13T18:32:17Z"
+  },
+  "servers" : [ {
+    "url" : "",
+    "variables" : {
+      "basePath" : {
+        "default" : "Prod"
+      }
+    }
+  } ],
+  "paths" : {
+    "/detectpiientities" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/detectpiientities"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      },
+      "options" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Methods" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Headers" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/detectdominantlanguage" : {
+      "get" : {
+        "parameters" : [ {
+          "name" : "text",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/detectdominantlanguage"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      },
+      "options" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Methods" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Headers" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/detectsentiment" : {
+      "get" : {
+        "parameters" : [ {
+          "name" : "text",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/detectsentimentresponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      },
+      "options" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Methods" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Headers" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/detecttoxiccontent" : {
+      "get" : {
+        "parameters" : [ {
+          "name" : "text",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/detecttoxiccontent"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      },
+      "options" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Methods" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Headers" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Empty" : {
+        "title" : "Empty Schema",
+        "type" : "object"
+      },
+      "detectsentimentresponse" : {
+        "required" : [ "Sentiment", "SentimentScore" ],
+        "type" : "object",
+        "properties" : {
+          "Sentiment" : {
+            "type" : "string"
+          },
+          "SentimentScore" : {
+            "required" : [ "Mixed", "Negative", "Neutral", "Positive" ],
+            "type" : "object",
+            "properties" : {
+              "Mixed" : {
+                "type" : "number"
+              },
+              "Negative" : {
+                "type" : "number"
+              },
+              "Neutral" : {
+                "type" : "number"
+              },
+              "Positive" : {
+                "type" : "number"
+              }
+            }
+          }
+        }
+      },
+      "detecttoxiccontent" : {
+        "title" : "Generated schema for Root",
+        "required" : [ "ResultList" ],
+        "type" : "object",
+        "properties" : {
+          "ResultList" : {
+            "type" : "array",
+            "items" : {
+              "required" : [ "Labels", "Toxicity" ],
+              "type" : "object",
+              "properties" : {
+                "Labels" : {
+                  "type" : "array",
+                  "items" : {
+                    "required" : [ "Name", "Score" ],
+                    "type" : "object",
+                    "properties" : {
+                      "Name" : {
+                        "type" : "string"
+                      },
+                      "Score" : {
+                        "type" : "number"
+                      }
+                    }
+                  }
+                },
+                "Toxicity" : {
+                  "type" : "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      "detectdominantlanguage" : {
+        "title" : "Generated schema for Root",
+        "required" : [ "Languages" ],
+        "type" : "object",
+        "properties" : {
+          "Languages" : {
+            "type" : "array",
+            "items" : {
+              "required" : [ "LanguageCode", "Score" ],
+              "type" : "object",
+              "properties" : {
+                "LanguageCode" : {
+                  "type" : "string"
+                },
+                "Score" : {
+                  "type" : "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      "detectpiientities" : {
+        "title" : "Generated schema for Root",
+        "required" : [ "Entities" ],
+        "type" : "object",
+        "properties" : {
+          "Entities" : {
+            "type" : "array",
+            "items" : {
+              "required" : [ "BeginOffset", "EndOffset", "Score", "Type" ],
+              "type" : "object",
+              "properties" : {
+                "BeginOffset" : {
+                  "type" : "number"
+                },
+                "EndOffset" : {
+                  "type" : "number"
+                },
+                "Score" : {
+                  "type" : "number"
+                },
+                "Type" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "api_key" : {
+        "type" : "apiKey",
+        "name" : "x-api-key",
+        "in" : "header"
+      }
+    }
+  }
+}

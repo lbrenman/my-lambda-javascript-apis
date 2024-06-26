@@ -1,0 +1,475 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Rekognition",
+    "description" : "Rekognition API -  identifies objects, people, text, scenes, activities and inappropriate content in images",
+    "version" : "2024-03-14T13:22:30Z"
+  },
+  "servers" : [ {
+    "url" : "https://t19dymxaw7.execute-api.us-east-1.amazonaws.com/{basePath}",
+    "variables" : {
+      "basePath" : {
+        "default" : "Prod"
+      }
+    }
+  } ],
+  "paths" : {
+    "/detectppe" : {
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/rekdetectimagebody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      },
+      "options" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Methods" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Headers" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/detectmoderationlabels" : {
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/rekdetectimagebody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/detectmoderationlabelsresponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      },
+      "options" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Methods" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Headers" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/detectlabels" : {
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/rekdetectimagebody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/detectlabelsresponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      },
+      "options" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Methods" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Headers" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/detecttext" : {
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/rekdetectimagebody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/detecttextresponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      },
+      "options" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Methods" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Headers" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Empty" : {
+        "title" : "Empty Schema",
+        "type" : "object"
+      },
+      "detectmoderationlabelsresponse" : {
+        "title" : "Generated schema for Root",
+        "required" : [ "ModerationLabels", "ModerationModelVersion" ],
+        "type" : "object",
+        "properties" : {
+          "ModerationLabels" : {
+            "type" : "array",
+            "items" : {
+              "required" : [ "Confidence", "Name", "ParentName" ],
+              "type" : "object",
+              "properties" : {
+                "Confidence" : {
+                  "type" : "number"
+                },
+                "Name" : {
+                  "type" : "string"
+                },
+                "ParentName" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "ModerationModelVersion" : {
+            "type" : "string"
+          }
+        }
+      },
+      "detectlabelsresponse" : {
+        "title" : "Generated schema for Root",
+        "required" : [ "LabelModelVersion", "Labels" ],
+        "type" : "object",
+        "properties" : {
+          "Labels" : {
+            "type" : "array",
+            "items" : {
+              "required" : [ "Aliases", "Categories", "Confidence", "Instances", "Name", "Parents" ],
+              "type" : "object",
+              "properties" : {
+                "Aliases" : {
+                  "type" : "array",
+                  "items" : {
+                    "required" : [ "Name" ],
+                    "type" : "object",
+                    "properties" : {
+                      "Name" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "Categories" : {
+                  "type" : "array",
+                  "items" : {
+                    "required" : [ "Name" ],
+                    "type" : "object",
+                    "properties" : {
+                      "Name" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "Confidence" : {
+                  "type" : "number"
+                },
+                "Instances" : {
+                  "type" : "array",
+                  "items" : {
+                    "required" : [ "BoundingBox", "Confidence" ],
+                    "type" : "object",
+                    "properties" : {
+                      "BoundingBox" : {
+                        "required" : [ "Height", "Left", "Top", "Width" ],
+                        "type" : "object",
+                        "properties" : {
+                          "Height" : {
+                            "type" : "number"
+                          },
+                          "Left" : {
+                            "type" : "number"
+                          },
+                          "Top" : {
+                            "type" : "number"
+                          },
+                          "Width" : {
+                            "type" : "number"
+                          }
+                        }
+                      },
+                      "Confidence" : {
+                        "type" : "number"
+                      }
+                    }
+                  }
+                },
+                "Name" : {
+                  "type" : "string"
+                },
+                "Parents" : {
+                  "type" : "array",
+                  "items" : {
+                    "required" : [ "Name" ],
+                    "type" : "object",
+                    "properties" : {
+                      "Name" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "LabelModelVersion" : {
+            "type" : "string"
+          }
+        }
+      },
+      "rekdetectimagebody" : {
+        "title" : "Generated schema for Root",
+        "required" : [ "image" ],
+        "type" : "object",
+        "properties" : {
+          "image" : {
+            "type" : "string"
+          }
+        }
+      },
+      "detecttextresponse" : {
+        "title" : "Generated schema for Root",
+        "required" : [ "TextDetections", "TextModelVersion" ],
+        "type" : "object",
+        "properties" : {
+          "TextDetections" : {
+            "type" : "array",
+            "items" : {
+              "required" : [ "Confidence", "DetectedText", "Geometry", "Id", "Type" ],
+              "type" : "object",
+              "properties" : {
+                "Confidence" : {
+                  "type" : "number"
+                },
+                "DetectedText" : {
+                  "type" : "string"
+                },
+                "Geometry" : {
+                  "required" : [ "BoundingBox", "Polygon" ],
+                  "type" : "object",
+                  "properties" : {
+                    "BoundingBox" : {
+                      "required" : [ "Height", "Left", "Top", "Width" ],
+                      "type" : "object",
+                      "properties" : {
+                        "Height" : {
+                          "type" : "number"
+                        },
+                        "Left" : {
+                          "type" : "number"
+                        },
+                        "Top" : {
+                          "type" : "number"
+                        },
+                        "Width" : {
+                          "type" : "number"
+                        }
+                      }
+                    },
+                    "Polygon" : {
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "X", "Y" ],
+                        "type" : "object",
+                        "properties" : {
+                          "X" : {
+                            "type" : "number"
+                          },
+                          "Y" : {
+                            "type" : "number"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "Id" : {
+                  "type" : "number"
+                },
+                "Type" : {
+                  "type" : "string"
+                },
+                "ParentId" : {
+                  "type" : "number"
+                }
+              }
+            }
+          },
+          "TextModelVersion" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "api_key" : {
+        "type" : "apiKey",
+        "name" : "x-api-key",
+        "in" : "header"
+      }
+    }
+  }
+}

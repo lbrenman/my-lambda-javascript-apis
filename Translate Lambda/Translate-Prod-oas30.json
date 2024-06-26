@@ -1,0 +1,222 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Translate",
+    "description" : "Translate API - Provides translation of the input content from the source language to the target language. Supported languages can be found here: https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html",
+    "version" : "2024-03-14T13:25:39Z"
+  },
+  "servers" : [ {
+    "url" : "",
+    "variables" : {
+      "basePath" : {
+        "default" : "Prod"
+      }
+    }
+  } ],
+  "paths" : {
+    "/listlanguages" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/listlanguagesresponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      },
+      "options" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Methods" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Headers" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/translatetext" : {
+      "get" : {
+        "parameters" : [ {
+          "name" : "sourcelanguage",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "text",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "targetlanguage",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/translatetextresponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      },
+      "options" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Methods" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Headers" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Empty" : {
+        "title" : "Empty Schema",
+        "type" : "object"
+      },
+      "translatetextresponse" : {
+        "title" : "Generated schema for Root",
+        "required" : [ "AppliedSettings", "SourceLanguageCode", "TargetLanguageCode", "TranslatedText" ],
+        "type" : "object",
+        "properties" : {
+          "AppliedSettings" : {
+            "required" : [ "Brevity", "Formality", "Profanity" ],
+            "type" : "object",
+            "properties" : {
+              "Brevity" : {
+                "type" : "string"
+              },
+              "Formality" : {
+                "type" : "string"
+              },
+              "Profanity" : {
+                "type" : "string"
+              }
+            }
+          },
+          "SourceLanguageCode" : {
+            "type" : "string"
+          },
+          "TargetLanguageCode" : {
+            "type" : "string"
+          },
+          "TranslatedText" : {
+            "type" : "string"
+          }
+        }
+      },
+      "listlanguagesresponse" : {
+        "title" : "Generated schema for Root",
+        "required" : [ "Languages" ],
+        "type" : "object",
+        "properties" : {
+          "Languages" : {
+            "type" : "array",
+            "items" : {
+              "required" : [ "LanguageCode", "LanguageName" ],
+              "type" : "object",
+              "properties" : {
+                "LanguageCode" : {
+                  "type" : "string"
+                },
+                "LanguageName" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "api_key" : {
+        "type" : "apiKey",
+        "name" : "x-api-key",
+        "in" : "header"
+      }
+    }
+  }
+}

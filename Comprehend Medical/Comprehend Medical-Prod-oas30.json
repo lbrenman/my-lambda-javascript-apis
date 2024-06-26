@@ -1,0 +1,297 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Comprehend Medical",
+    "description" : "Comprehend Medical API - extracts structured information from unstructured clinical English text",
+    "version" : "2024-03-14T22:33:05Z"
+  },
+  "servers" : [ {
+    "url" : "",
+    "variables" : {
+      "basePath" : {
+        "default" : "Prod"
+      }
+    }
+  } ],
+  "paths" : {
+    "/detectentities" : {
+      "get" : {
+        "parameters" : [ {
+          "name" : "text",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/detectentitiesresponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      },
+      "options" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Methods" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Headers" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/detectphi" : {
+      "get" : {
+        "parameters" : [ {
+          "name" : "text",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/detectphiresponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      },
+      "options" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Methods" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Headers" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Empty" : {
+        "title" : "Empty Schema",
+        "type" : "object"
+      },
+      "detectphiresponse" : {
+        "title" : "Generated schema for Root",
+        "required" : [ "Entities", "ModelVersion" ],
+        "type" : "object",
+        "properties" : {
+          "Entities" : {
+            "type" : "array",
+            "items" : {
+              "required" : [ "BeginOffset", "Category", "EndOffset", "Id", "Score", "Text", "Traits", "Type" ],
+              "type" : "object",
+              "properties" : {
+                "BeginOffset" : {
+                  "type" : "number"
+                },
+                "Category" : {
+                  "type" : "string"
+                },
+                "EndOffset" : {
+                  "type" : "number"
+                },
+                "Id" : {
+                  "type" : "number"
+                },
+                "Score" : {
+                  "type" : "number"
+                },
+                "Text" : {
+                  "type" : "string"
+                },
+                "Traits" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object"
+                  }
+                },
+                "Type" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "ModelVersion" : {
+            "type" : "string"
+          }
+        }
+      },
+      "detectentitiesresponse" : {
+        "title" : "Generated schema for Root",
+        "required" : [ "Entities", "ModelVersion" ],
+        "type" : "object",
+        "properties" : {
+          "Entities" : {
+            "type" : "array",
+            "items" : {
+              "required" : [ "Attributes", "BeginOffset", "Category", "EndOffset", "Id", "Score", "Text", "Traits", "Type" ],
+              "type" : "object",
+              "properties" : {
+                "Attributes" : {
+                  "type" : "array",
+                  "items" : {
+                    "required" : [ "BeginOffset", "Category", "EndOffset", "Id", "RelationshipScore", "RelationshipType", "Score", "Text", "Traits", "Type" ],
+                    "type" : "object",
+                    "properties" : {
+                      "BeginOffset" : {
+                        "type" : "number"
+                      },
+                      "Category" : {
+                        "type" : "string"
+                      },
+                      "EndOffset" : {
+                        "type" : "number"
+                      },
+                      "Id" : {
+                        "type" : "number"
+                      },
+                      "RelationshipScore" : {
+                        "type" : "number"
+                      },
+                      "RelationshipType" : {
+                        "type" : "string"
+                      },
+                      "Score" : {
+                        "type" : "number"
+                      },
+                      "Text" : {
+                        "type" : "string"
+                      },
+                      "Traits" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "object"
+                        }
+                      },
+                      "Type" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "BeginOffset" : {
+                  "type" : "number"
+                },
+                "Category" : {
+                  "type" : "string"
+                },
+                "EndOffset" : {
+                  "type" : "number"
+                },
+                "Id" : {
+                  "type" : "number"
+                },
+                "Score" : {
+                  "type" : "number"
+                },
+                "Text" : {
+                  "type" : "string"
+                },
+                "Traits" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object"
+                  }
+                },
+                "Type" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "ModelVersion" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "api_key" : {
+        "type" : "apiKey",
+        "name" : "x-api-key",
+        "in" : "header"
+      }
+    }
+  }
+}
