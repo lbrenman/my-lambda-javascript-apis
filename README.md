@@ -18,3 +18,6 @@ AWS Lambda and API Gateway - Created in JavaScript/NodeJS in Lambda and exposed 
 * Translate - text translation service that uses advanced machine learning technologies to provide high-quality translations
 * Google Gemini - understand and generate text from a text prompt
     * Generate Text
+* Finance - Stock Quote and Watchlist
+    * Quote
+    * Watchlist
