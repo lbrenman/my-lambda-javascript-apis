@@ -21,3 +21,6 @@ AWS Lambda and API Gateway - Created in JavaScript/NodeJS in Lambda and exposed 
 * Finance - Stock Quote and Watchlist - Nodejs Lambda implementation of the API described [here](https://github.com/lbrenman/ai-stockquote-fh)
     * Quote
     * Watchlist
+* Image Loader - An image API to upload an image and get a URL to use with other services. Leverages AWS S3 for storage.
+    * Image - Get, Post, Delete
+    * ImageList - List all images
