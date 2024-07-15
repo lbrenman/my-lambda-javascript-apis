@@ -20,10 +20,19 @@ export const handler = async (event) => {
         }
         
         console.log('Objects in bucket:', objectKeys);  
+        
+        let fileNameArray = [];
+        objectKeys.forEach(item => {
+            fileNameArray.push({
+                fileName: item
+            })
+        });
+        
 
         return {
             statusCode: 200,
-            body: JSON.stringify(objectKeys)
+            //body: JSON.stringify(objectKeys)
+            body: JSON.stringify(fileNameArray)
         };
     } catch (err) {
         console.error('Error retrieving bucket contents:', err);
