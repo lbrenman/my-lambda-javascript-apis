@@ -1,5 +1,5 @@
 import { S3Client, DeleteObjectCommand } from "@aws-sdk/client-s3";
-const s3Client = new S3Client({region: 'us-east-1'});
+const s3Client = new S3Client({region: process.env.REGION});
 
 export const handler = async (event) => {
     
