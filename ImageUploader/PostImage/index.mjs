@@ -1,5 +1,8 @@
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
-const s3Client = new S3Client();
+import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
+
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+
+const s3Client = new S3Client({region:'us-east-1'});
 
 export const handler = async (event) => {
     
@@ -7,8 +10,8 @@ export const handler = async (event) => {
     const body = JSON.parse(event.body);
     
     const bucketName = process.env.BUCKETNAME;
-    const fileName = body.filename; // You can generate a unique name if needed
-    const base64String = body.image; // Assume the event contains the base64 data under this key
+    const fileName = body.filename;
+    const base64String = body.image;
 
     console.log(fileName);
     console.log(base64String);
@@ -26,6 +29,16 @@ export const handler = async (event) => {
             ContentType: 'image/jpeg' // adjust accordingly if it's a different image type
         });
         await s3Client.send(putObjectCommand);
+        
+        // Create the command
+        const getObjectCommand = new GetObjectCommand({
+            Bucket: bucketName,
+            Key: fileName
+        });
+        
+        // Generate a pre-signed URL - NOT WORKING - GENERATING ERROR: A region must be set when sending requests to S3
+        // const signedUrl = await getSignedUrl(s3Client, GetObjectCommand, { expiresIn: 3600 }); // URL expires in 1 hour
+
         
         // Construct the URL of the uploaded file
         const fileUrl = `https://${bucketName}.s3.amazonaws.com/${fileName}`;

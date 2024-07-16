@@ -1,5 +1,5 @@
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
-const s3Client = new S3Client();
+const s3Client = new S3Client({region: 'us-east-1'});
 
 // Returns Base64 encoded image
 // Put the following in your Postman script to visualize the response
