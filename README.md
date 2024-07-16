@@ -22,5 +22,6 @@ AWS Lambda and API Gateway - Created in JavaScript/NodeJS in Lambda and exposed 
     * Quote
     * Watchlist
 * Image Loader - An image API to upload an image and get a URL to use with other services. Leverages AWS S3 for storage.
-    * Image - Get, Post, Delete
+    * Image - Get, Post, Delete (POST is the main API that would be exposed to consumers so they can upload a photo and get a signedUrl that lasts for 6 minutes)
     * ImageList - List all images
+    * Bucket Cleaner - a scheduled lambda function that removes images older than 1 hour
