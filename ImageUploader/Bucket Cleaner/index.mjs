@@ -12,6 +12,7 @@ export const handler = async (event) => {
         const objects = response.Contents;
 
         if (!objects || objects.length === 0) {
+            console.log('No objects found in the bucket');
             return {
                 statusCode: 200,
                 body: JSON.stringify({ message: 'No objects found in the bucket' })
