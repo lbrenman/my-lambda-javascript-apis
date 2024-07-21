@@ -25,3 +25,6 @@ AWS Lambda and API Gateway - Created in JavaScript/NodeJS in Lambda and exposed 
     * Image - Get, Post, Delete (POST is the main API that would be exposed to consumers so they can upload a photo and get a signedUrl that lasts for 6 minutes)
     * ImageList - List all images
     * Bucket Cleaner - a scheduled lambda function that removes images older than 1 hour
+* Amplify Platform Utils - A set of API's to perform operations on Axway Amplify Platform (Central/Marketplace
+    * Get Environments
+    * Get Product Subscriptions by Status
