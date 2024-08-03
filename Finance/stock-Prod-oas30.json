@@ -1,0 +1,288 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "stock",
+    "description" : "US Stock quote and watch list API\n\nExample stock symbols to use:\nAAPL, INTC, AMZN, TXN, NVDA, MSFT, TSLA",
+    "version" : "1.0"
+  },
+  "paths" : {
+    "/watchlist" : {
+      "get" : {
+        "operationId" : "get-watchlist",
+        "parameters" : [ {
+          "name" : "symbols",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "404 response",
+            "headers" : {
+              "content-type" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/404Response"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "500 response",
+            "headers" : {
+              "content-type" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/500Response"
+                }
+              }
+            }
+          },
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "content-type" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ArrayOfWatchListItem"
+                }
+              }
+            }
+          }
+        }
+      },
+      "options" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Methods" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Headers" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : { }
+          }
+        }
+      }
+    },
+    "/quote" : {
+      "get" : {
+        "operationId" : "get-stock-quote",
+        "parameters" : [ {
+          "name" : "symbol",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "404 response",
+            "headers" : {
+              "content-type" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/404Response"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "500 response",
+            "headers" : {
+              "content-type" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/500Response"
+                }
+              }
+            }
+          },
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "content-type" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Quote"
+                }
+              }
+            }
+          }
+        }
+      },
+      "options" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Methods" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "Access-Control-Allow-Headers" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : { }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Quote" : {
+        "type" : "object",
+        "properties" : {
+          "Price" : {
+            "type" : "number"
+          },
+          "Change" : {
+            "type" : "number"
+          },
+          "ChangePercent" : {
+            "type" : "number"
+          },
+          "DayHigh" : {
+            "type" : "number"
+          },
+          "DayLow" : {
+            "type" : "number"
+          },
+          "OpenPrice" : {
+            "type" : "number"
+          },
+          "PreviousClose" : {
+            "type" : "number"
+          },
+          "Symbol" : {
+            "type" : "string"
+          },
+          "Name" : {
+            "type" : "string"
+          }
+        }
+      },
+      "500Response" : {
+        "title" : "500Response",
+        "type" : "object",
+        "properties" : {
+          "message" : {
+            "type" : "string"
+          }
+        },
+        "description" : "500 Response"
+      },
+      "ArrayOfWatchListItem" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/WatchListItem"
+        }
+      },
+      "WatchListItem" : {
+        "type" : "object",
+        "properties" : {
+          "Symbol" : {
+            "type" : "string"
+          },
+          "Name" : {
+            "type" : "string"
+          },
+          "Logo" : {
+            "type" : "string"
+          },
+          "ChangePercent" : {
+            "type" : "number"
+          },
+          "Price" : {
+            "type" : "number"
+          },
+          "Change" : {
+            "type" : "number"
+          }
+        },
+        "description" : "Watch List Item"
+      },
+      "404Response" : {
+        "title" : "404Response",
+        "type" : "object",
+        "properties" : {
+          "message" : {
+            "type" : "string"
+          }
+        },
+        "description" : "404 Response"
+      }
+    }
+  }
+}

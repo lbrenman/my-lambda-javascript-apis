@@ -2,6 +2,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const axios = require('axios');
 const finnhubToken = process.env.FINNHUBTOKEN;
+const isEmpty = obj => JSON.stringify(obj) === '{}';
 
 export const handler = async (event) => {
     const symbol=event.queryStringParameters.symbol;
@@ -27,17 +28,33 @@ export const handler = async (event) => {
             Symbol: response2.data.ticker,
             Name: response2.data.name
         }
-
-        return {
-            statusCode: 200,
-            body: JSON.stringify(data)
-        };
+        
+        if(isEmpty(response2.data)) {
+            return {
+                statusCode: 404,
+                body: JSON.stringify({message: 'Bad symbol'}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+        } else {
+            return {
+                statusCode: 200,
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };    
+        }
+        
     } catch (error) {
         console.error('Error:', error);
         return {
             statusCode: 500,
-            //body: JSON.stringify({ message: 'Error occurred' })
-            body: JSON.stringify({ error: error })
+            body: JSON.stringify({ message: 'Server error' }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         };
     }
 };
