@@ -31,7 +31,7 @@ export const handler = async (event) => {
         
         if(isEmpty(response2.data)) {
             return {
-                statusCode: 404,
+                statusCode: 204,
                 body: JSON.stringify({message: 'Bad symbol'}),
                 headers: {
                     'Content-Type': 'application/json'

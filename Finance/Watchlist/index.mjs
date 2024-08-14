@@ -50,7 +50,7 @@ export const handler = async (event) => {
 
         if(data.length === 0) {
             return {
-                statusCode: 404,
+                statusCode: 204,
                 body: JSON.stringify({ message: 'Symbols not found' })
             };
         } else {

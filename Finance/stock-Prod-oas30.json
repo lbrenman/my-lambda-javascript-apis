@@ -5,6 +5,14 @@
     "description" : "US Stock quote and watch list API\n\nExample stock symbols to use:\nAAPL, INTC, AMZN, TXN, NVDA, MSFT, TSLA",
     "version" : "1.0"
   },
+  "servers" : [ {
+    "url" : "https://wrqhaag7jf.execute-api.us-east-2.amazonaws.com/{basePath}",
+    "variables" : {
+      "basePath" : {
+        "default" : "Prod"
+      }
+    }
+  } ],
   "paths" : {
     "/watchlist" : {
       "get" : {
@@ -18,23 +26,6 @@
           }
         } ],
         "responses" : {
-          "404" : {
-            "description" : "404 response",
-            "headers" : {
-              "content-type" : {
-                "schema" : {
-                  "type" : "string"
-                }
-              }
-            },
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/404Response"
-                }
-              }
-            }
-          },
           "500" : {
             "description" : "500 response",
             "headers" : {
@@ -55,11 +46,6 @@
           "200" : {
             "description" : "200 response",
             "headers" : {
-              "Access-Control-Allow-Origin" : {
-                "schema" : {
-                  "type" : "string"
-                }
-              },
               "content-type" : {
                 "schema" : {
                   "type" : "string"
@@ -73,8 +59,28 @@
                 }
               }
             }
+          },
+          "204" : {
+            "description" : "204 response",
+            "headers" : {
+              "content-type" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/204Response"
+                }
+              }
+            }
           }
-        }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
       },
       "options" : {
         "responses" : {
@@ -114,23 +120,6 @@
           }
         } ],
         "responses" : {
-          "404" : {
-            "description" : "404 response",
-            "headers" : {
-              "content-type" : {
-                "schema" : {
-                  "type" : "string"
-                }
-              }
-            },
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/404Response"
-                }
-              }
-            }
-          },
           "500" : {
             "description" : "500 response",
             "headers" : {
@@ -151,11 +140,6 @@
           "200" : {
             "description" : "200 response",
             "headers" : {
-              "Access-Control-Allow-Origin" : {
-                "schema" : {
-                  "type" : "string"
-                }
-              },
               "content-type" : {
                 "schema" : {
                   "type" : "string"
@@ -169,8 +153,28 @@
                 }
               }
             }
+          },
+          "204" : {
+            "description" : "204 response",
+            "headers" : {
+              "content-type" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/204Response"
+                }
+              }
+            }
           }
-        }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
       },
       "options" : {
         "responses" : {
@@ -273,15 +277,22 @@
         },
         "description" : "Watch List Item"
       },
-      "404Response" : {
-        "title" : "404Response",
+      "204Response" : {
+        "title" : "204Response",
         "type" : "object",
         "properties" : {
           "message" : {
             "type" : "string"
           }
         },
-        "description" : "404 Response"
+        "description" : "204 Response"
+      }
+    },
+    "securitySchemes" : {
+      "api_key" : {
+        "type" : "apiKey",
+        "name" : "x-api-key",
+        "in" : "header"
       }
     }
   }
