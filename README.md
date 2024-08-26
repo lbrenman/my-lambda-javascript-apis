@@ -28,3 +28,9 @@ AWS Lambda and API Gateway - Created in JavaScript/NodeJS in Lambda and exposed 
 * Amplify Platform Utils - A set of API's to perform operations on Axway Amplify Platform (Central/Marketplace
     * Get Environments
     * Get Product Subscriptions by Status
+* Employee API to do CRUD operations to a DynamoDB
+    * Get All
+    * Create
+    * Get By ID
+    * Delete By ID
+    * Update By ID
