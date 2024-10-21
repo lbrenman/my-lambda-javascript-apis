@@ -5,7 +5,21 @@ const finnhubToken = process.env.FINNHUBTOKEN;
 const isEmpty = obj => JSON.stringify(obj) === '{}';
 
 export const handler = async (event) => {
-    const symbol=event.queryStringParameters.symbol;
+    
+    const queryParams = event.queryStringParameters;
+
+    if (!(queryParams && queryParams.hasOwnProperty('symbol'))) {
+        // console.log('Query parameter, symbol, is missing');
+        return {
+            statusCode: 400,
+            body: JSON.stringify({message: 'Missing symbol'}),
+            headers: {
+              "Access-Control-Allow-Origin": "*"
+            }
+        };
+    }
+    
+    const symbol=queryParams.symbol;
     
     try {
         const apiUrl1 = `https://finnhub.io/api/v1/quote?symbol=${symbol}`;
@@ -18,15 +32,17 @@ export const handler = async (event) => {
         ]);
 
         const data = {
-            Price: response1.data.c,
-            Change: response1.data.d,
-            ChangePercent: response1.data.dp,
-            DayHigh: response1.data.h,
-            DayLow: response1.data.l,
-            OpenPrice: response1.data.o,
-            PreviousClose: response1.data.pc,
-            Symbol: response2.data.ticker,
-            Name: response2.data.name
+            Quote: {
+                Price: response1.data.c,
+                Change: response1.data.d,
+                ChangePercent: response1.data.dp,
+                DayHigh: response1.data.h,
+                DayLow: response1.data.l,
+                OpenPrice: response1.data.o,
+                PreviousClose: response1.data.pc,
+                Symbol: response2.data.ticker,
+                Name: response2.data.name
+            }
         }
         
         if(isEmpty(response2.data)) {
@@ -34,7 +50,7 @@ export const handler = async (event) => {
                 statusCode: 204,
                 body: JSON.stringify({message: 'Bad symbol'}),
                 headers: {
-                    'Content-Type': 'application/json'
+                  "Access-Control-Allow-Origin": "*"
                 }
             };
         } else {
@@ -42,7 +58,7 @@ export const handler = async (event) => {
                 statusCode: 200,
                 body: JSON.stringify(data),
                 headers: {
-                    'Content-Type': 'application/json'
+                  "Access-Control-Allow-Origin": "*"
                 }
             };    
         }
@@ -53,7 +69,7 @@ export const handler = async (event) => {
             statusCode: 500,
             body: JSON.stringify({ message: 'Server error' }),
             headers: {
-                'Content-Type': 'application/json'
+              "Access-Control-Allow-Origin": "*"
             }
         };
     }

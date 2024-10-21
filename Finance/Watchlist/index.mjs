@@ -5,9 +5,22 @@ const finnhubToken = process.env.FINNHUBTOKEN;
 const isEmpty = obj => JSON.stringify(obj) === '{}';
 
 export const handler = async (event) => {
-    const symbols=event.queryStringParameters.symbols;
-    const data = [];
+    const queryParams = event.queryStringParameters;
+
+    if (!(queryParams && queryParams.hasOwnProperty('symbols'))) {
+        // console.log('Query parameter, symbols, is missing');
+        return {
+            statusCode: 400,
+            body: JSON.stringify({message: 'Missing symbols'}),
+            headers: {
+              "Access-Control-Allow-Origin": "*"
+            }
+        };
+    }
+    
+    const symbols=queryParams.symbols;
     const symbolsArray = symbols.split(',');
+    const data = [];
     
     try {
          // Array to store all API requests and responses
@@ -51,12 +64,20 @@ export const handler = async (event) => {
         if(data.length === 0) {
             return {
                 statusCode: 204,
-                body: JSON.stringify({ message: 'Symbols not found' })
+                body: JSON.stringify({ message: 'Symbols not found' }),
+                headers: {
+                  "Access-Control-Allow-Origin": "*"
+                }
             };
         } else {
             return {
                 statusCode: 200,
-                body: JSON.stringify(data)
+                body: JSON.stringify({
+                    Watchlist: data
+                }),
+                headers: {
+                  "Access-Control-Allow-Origin": "*"
+                }
             };            
         }
 
@@ -64,7 +85,10 @@ export const handler = async (event) => {
         console.error('Error:', error);
         return {
             statusCode: 500,
-            body: JSON.stringify({ message: 'Server error' })
+            body: JSON.stringify({ message: 'Server error' }),
+            headers: {
+              "Access-Control-Allow-Origin": "*"
+            }
         };
     }
 };
